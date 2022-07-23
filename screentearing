@@ -28,4 +28,5 @@ EndSection""""")
   file.close()
 #ofcourse nvidia being weird and not using xorg.conf.d
 elif gpu == "nvidia":
+  print("hacky fix, stops working after reboot, go into nvidia-settings and change it yourself")
   subprocess.run(["nvidia-settings", """--assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"""""])
