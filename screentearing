@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+#need this for a workaround.
+import subprocess
+print("run with elevated permissions!")
+
+subprocess.run(["mkdir", "/etc/X11/xorg.conf.d"])
+
+gpu = input("What gpu do you have?the supported ones are amd gpus and intel igpus:")
+
+if gpu == "amd":
+  file = open("/etc/X11/xorg.conf.d/20-amdgpu.conf", "w")
+  file.write("""
+Section "Device"
+    Identifier  "AMD Graphics"
+    Driver      "amdgpu"
+    Option      "TearFree"  "true"
+EndSection""""")
+  file.close()
+
+elif gpu == "intel":
+  file = open("/etc/X11/xorg.conf.d/20-intel-gpu.conf", "w")
+  file.write("""
+Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "intel"
+    Option      "TearFree"  "true"
+EndSection""""")
+  file.close()
+
