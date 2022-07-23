@@ -27,5 +27,5 @@ Section "Device"
 EndSection""""")
   file.close()
 #ofcourse nvidia being weird and not using xorg.conf.d
-elif gpu == "nvidia"
-  subprocces.run(["nvidia-settings", "--assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"])
+elif gpu == "nvidia":
+  subprocces.run(["nvidia-settings", "--assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }""])
