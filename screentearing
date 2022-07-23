@@ -3,11 +3,10 @@
 import subprocess
 print("run with elevated permissions!")
 
-subprocess.run(["mkdir", "/etc/X11/xorg.conf.d"])
-
-gpu = input("What gpu do you have?the supported ones are amd gpus and intel igpus:")
+gpu = input("What gpu do you have?the supported ones are amd gpus intel igpus:")
 
 if gpu == "amd":
+  subprocess.run(["mkdir", "/etc/X11/xorg.conf.d"])
   file = open("/etc/X11/xorg.conf.d/20-amdgpu.conf", "w")
   file.write("""
 Section "Device"
@@ -16,8 +15,9 @@ Section "Device"
     Option      "TearFree"  "true"
 EndSection""""")
   file.close()
-
+  
 elif gpu == "intel":
+  subprocess.run(["mkdir", "/etc/X11/xorg.conf.d"])
   file = open("/etc/X11/xorg.conf.d/20-intel-gpu.conf", "w")
   file.write("""
 Section "Device"
@@ -26,4 +26,6 @@ Section "Device"
     Option      "TearFree"  "true"
 EndSection""""")
   file.close()
-
+#ofcourse nvidia being weird and not using xorg.conf.d
+elif gpu == "nvidia"
+  subprocces.run(["nvidia-settings", "--assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"])
